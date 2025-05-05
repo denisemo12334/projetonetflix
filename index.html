@@ -1,53 +1,66 @@
-<html lang="pt-BR">
+import React from "react";
+import { Input } from "@/components/ui/input";
+import { Card, CardContent } from "@/components/ui/card";
+import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 
-<head>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-        rel="stylesheet">
-    <title>deadflix</title>
-</head>
+const productsFeatured = [
+  { id: 1, name: "Produto 1", price: "R$ 99,90", image: "/images/produto1.jpg" },
+  { id: 2, name: "Produto 2", price: "R$ 149,90", image: "/images/produto2.jpg" },
+  { id: 3, name: "Produto 3", price: "R$ 89,90", image: "/images/produto3.jpg" },
+];
 
-<body>
-    <header>DEADFLIX</header>
+const productsNew = [
+  { id: 4, name: "Produto 4", price: "R$ 129,90", image: "/images/produto4.jpg" },
+  { id: 5, name: "Produto 5", price: "R$ 199,90", image: "/images/produto5.jpg" },
+  { id: 6, name: "Produto 6", price: "R$ 79,90", image: "/images/produto6.jpg" },
+];
 
-    <section class="chamada">
-        <div class="chamada-texto">
-            <h1>THE WALKING DEAD</h1>
-            <p>#thewalkingdead</p>
+export default function Home() {
+  return (
+    <div className="min-h-screen bg-gray-900 text-white p-6 space-y-8">
+      <header className="w-full max-w-3xl mx-auto">
+        <Input className="w-full bg-gray-800 text-white" placeholder="Buscar produtos..." />
+      </header>
+
+      <section>
+        <h2 className="text-2xl font-bold mb-4">Destaques</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          {productsFeatured.map((product) => (
+            <Card key={product.id} className="bg-gray-800">
+              <CardContent className="p-4">
+                <img src={product.image} alt={product.name} className="w-full h-48 object-cover rounded" />
+                <h3 className="mt-2 text-lg font-semibold">{product.name}</h3>
+                <p className="text-green-400">{product.price}</p>
+              </CardContent>
+            </Card>
+          ))}
         </div>
+      </section>
 
-        <div>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/7tFhJJsY8ks?si=82KMBN4lM_ls5r_J"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <section>
+        <h2 className="text-2xl font-bold mb-4">Novos Lançamentos</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          {productsNew.map((product) => (
+            <Card key={product.id} className="bg-gray-800">
+              <CardContent className="p-4">
+                <img src={product.image} alt={product.name} className="w-full h-48 object-cover rounded" />
+                <h3 className="mt-2 text-lg font-semibold">{product.name}</h3>
+                <p className="text-green-400">{product.price}</p>
+              </CardContent>
+            </Card>
+          ))}
         </div>
-    </section>
+      </section>
 
-    <section class="categoria">
-        <h2>Filmes</h2>
-        <div class="categoria-videos">
-            <a href="https://www.youtube.com/watch?v=-Eu7XVppK6Q">
-                <img src="https://img.youtube.com/vi/-Eu7XVppK6Q/maxresdefault.jpg" />
-            </a>
-            <a href="https://www.youtube.com/watch?v=l3LQgORbhu4">
-                <img src="https://img.youtube.com/vi/l3LQgORbhu4/maxresdefault.jpg" />
-            </a>
-            <a href="https://www.youtube.com/watch?v=0JZ8WGVSrwM">
-                <img src="https://img.youtube.com/vi/0JZ8WGVSrwM/maxresdefault.jpg" />
-            </a>
-            <a href="https://www.youtube.com/watch?v=dD264ZjfKlk">
-                <img src="https://img.youtube.com/vi/dD264ZjfKlk/maxresdefault.jpg" />
-            </a>
-            <a href="https://www.youtube.com/watch?v=mCKhq-6anoU">
-                <img src="https://img.youtube.com/vi/mCKhq-6anoU/maxresdefault.jpg" />
-            </a>
+      <footer className="border-t border-gray-700 pt-6 mt-10 text-center">
+        <div className="flex justify-center space-x-6 mb-4">
+          <a href="#" className="text-white hover:text-blue-500"><FaFacebook size={24} /></a>
+          <a href="#" className="text-white hover:text-blue-400"><FaTwitter size={24} /></a>
+          <a href="#" className="text-white hover:text-pink-500"><FaInstagram size={24} /></a>
         </div>
-    </section>
+        <p>Email para contato: contato@meusite.com</p>
+      </footer>
+    </div>
+  );
+}
 
-</body>
-
-</html>
